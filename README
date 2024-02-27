@@ -28,3 +28,27 @@
 - генерация моков
 
 Нужно определиться с нашими данными
+
+
+
+1. brew install sqlc
+2. sqlc init
+3. Папка query и sqlc
+4. version: "1"
+   packages:
+       - name: "db"
+         path: "./database/sqlc"
+         queries: "./database/query"
+         schema: "./database/migrations"
+         engine: "postgresql"
+         emit_json_tags: true
+         emit_prepared_queries: false
+         emit_interface: false
+         emit_exact_table_names: false
+5. В папке query пишем все круд операции для accounts, entries, transfers
+6. Генерим после этого все
+7. TestMain с коннектом
+8. Все крудовские операции покрыть тестами
+9. Прочитать про ACID, уровни изоляции в постгре, про работу с транзакциями, MVCC, mutex
+
+Postgresql - уровни изоляции READ UNCOMMITED, READ COMMITED, REPEATABLE READ, SERIALIZABLE
